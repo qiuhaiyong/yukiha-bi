@@ -3,19 +3,19 @@
     <div class="screen-wrapper" :style="wrapperOptions">
       <VueDragResize
         v-for="(rect, index) in rects"
-        :key="index"
+        :key="rect.id"
         :w="rect.width"
         :h="rect.height"
         :x="rect.left"
         :y="rect.top"
         :isActive="rect.active"
-        :parentScaleX="0.6"
-        :parentScaleY="0.6"
+        :parentScaleX="0.7"
+        :parentScaleY="0.7"
         :parentLimitation="true"
-        @activated="activateEv(index)"
-        @deactivated="deactivateEv(index)"
-        @dragging="changeDimensions($event, index)"
-        @resizing="changeDimensions($event, index)"
+        @activated="activateEv(rect.id)"
+        @deactivated="deactivateEv(rect.id)"
+        @dragging="changeDimensions($event, rect.id)"
+        @resizing="changeDimensions($event, rect.id)"
       >
         <div
           :style="{
@@ -30,15 +30,15 @@
 </template>
 
 <script setup>
+import useRectStore from '@/stores/rect'
 import { ref } from 'vue'
 import VueDragResize from 'vue-drag-resize/src/component/vue-drag-resize.vue'
-import useRectStore from '@/stores/rect'
 
 // 画布样式配置
 const wrapperOptions = ref({
   width: '1920px',
   height: '1080px',
-  transform: 'scale(0.6)'
+  transform: 'scale(0.7) translate(-50%, -50%)'
 })
 
 const rectSotre = useRectStore()
@@ -47,13 +47,13 @@ const rectSotre = useRectStore()
 const rects = rectSotre.$state.rects
 
 // 点击设置为活跃状态
-const activateEv = (index) => {
-  rectSotre.enableActive(index)
+const activateEv = (id) => {
+  rectSotre.enableActive(id)
 }
 
 // 点击拖拽元素以外的地方将元素设置为不活跃状态
-const deactivateEv = (index) => {
-  rectSotre.disableActive(index)
+const deactivateEv = (id) => {
+  rectSotre.disableActive(id)
 }
 
 // 改变尺寸、位置
@@ -70,13 +70,15 @@ const changeDimensions = (newRect) => {
   flex: 1;
   overflow: auto;
   position: relative;
-  border: 1px solid black;
   .screen-wrapper {
-    border: 1px solid black;
+    border: 1px solid var(--el-border-color-light);
+    background-color: var(--el-border-color-light);
+    border-radius: 12px;
+    box-shadow: var(--el-box-shadow-light);
     transform-origin: left top;
     position: absolute;
-    left: 45px;
-    top: 60px;
+    left: 50%;
+    top: 50%;
   }
 }
 </style>

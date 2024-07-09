@@ -10,10 +10,10 @@
 </template>
 
 <script setup>
+import ConfigPanel from '@/components/ConfigPanel/index.vue'
+import ScreenWrapper from '@/components/ScreenWrapper/index.vue'
 import ToolBar from '@/components/ToolBar/index.vue'
 import ZIndexBar from '@/components/ZIndexPanel/index.vue'
-import ScreenWrapper from '@/components/ScreenWrapper/index.vue'
-import ConfigPanel from '@/components/ConfigPanel/index.vue'
 </script>
 
 <style>
@@ -27,6 +27,7 @@ import ConfigPanel from '@/components/ConfigPanel/index.vue'
     height: 0;
     flex: 1;
     display: flex;
+    gap: 5px;
   }
 }
 </style>
