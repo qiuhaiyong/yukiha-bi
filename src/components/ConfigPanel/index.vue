@@ -27,7 +27,7 @@ const tabOneActiveName = ref('config')
 
 const tabTowActiveName = ref('screenConfig')
 
-// view:视图模式 js：js模式
+// view：视图模式 js：js模式
 const configModel = ref('view')
 
 const activeRect = computed(() => rectSotre.activeRect)

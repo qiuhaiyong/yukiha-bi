@@ -1,8 +1,8 @@
 <template>
-  <div class="screen-wrapper-container">
+  <div class="screen-wrapper-container" @click="deactivateEv(rectSotre.activeRectId)">
     <div class="screen-wrapper" :style="wrapperOptions">
       <VueDragResize
-        v-for="(rect, index) in rects"
+        v-for="rect in rects"
         :key="rect.id"
         :w="rect.width"
         :h="rect.height"
@@ -14,11 +14,10 @@
         :parentScaleY="0.6"
         :parentLimitation="true"
         @activated="activateEv(rect.id)"
-        @deactivated="deactivateEv(rect.id)"
         @dragging="changeDimensions($event, rect.id)"
         @resizing="changeDimensions($event, rect.id)"
-        @click.right.native.prevent="contextMenu"
-        @mousedown.stop
+        @contextmenu.native.prevent="contextMenu($event)"
+        @click.stop
       >
         <div
           :style="{
@@ -30,13 +29,20 @@
       </VueDragResize>
     </div>
   </div>
+  <!-- 右键拖拽元素显示的菜单 -->
+  <ContextMenu v-model:show="showContextMenu" :options="contextMenuOptions">
+    <ContextMenuItem label="删除" @click="deleteRect"></ContextMenuItem>
+    <ContextMenuItem label="tessts"></ContextMenuItem>
+  </ContextMenu>
 </template>
 
 <script setup>
 import useRectStore from '@/stores/rect'
+import { Delete } from '@element-plus/icons-vue'
+import { ContextMenu, ContextMenuItem } from '@imengyu/vue3-context-menu'
 import { useThrottleFn } from '@vueuse/core'
-import { ref } from 'vue'
-
+import { ElMessageBox } from 'element-plus'
+import { markRaw, reactive, ref } from 'vue'
 import VueDragResize from 'vue-drag-resize/src/component/vue-drag-resize.vue'
 
 // 画布样式配置
@@ -50,6 +56,16 @@ const rectSotre = useRectStore()
 
 // 元素
 const rects = rectSotre.$state.rects
+
+// 是否展示右键菜单
+const showContextMenu = ref(false)
+// 右键菜单配置项
+const contextMenuOptions = reactive({
+  zIndex: 99999,
+  x: 0,
+  y: 0,
+  theme: 'mac'
+})
 
 // 点击设置为活跃状态
 const activateEv = (id) => {
@@ -71,7 +87,23 @@ const changeDimensions = useThrottleFn((newRect) => {
 
 // 右键
 const contextMenu = (e) => {
-  console.log(e)
+  //显示组件菜单
+  contextMenuOptions.x = e.x
+  contextMenuOptions.y = e.y
+  //Show menu
+  showContextMenu.value = true
+}
+
+// 删除图形
+const deleteRect = () => {
+  ElMessageBox.confirm('请确认是否删除?', '提示', {
+    type: 'warning',
+    icon: markRaw(Delete),
+    confirmButtonText: '确认',
+    cancelButtonText: '取消'
+  }).then(() => {
+    rectSotre.deleteRect()
+  })
 }
 </script>
 

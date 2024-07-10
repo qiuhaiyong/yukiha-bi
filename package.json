@@ -17,6 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@imengyu/vue3-context-menu": "^1.4.1",
     "@types/lodash": "^4.17.6",
     "@vueuse/core": "^10.11.0",
     "element-plus": "^2.7.6",

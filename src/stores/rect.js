@@ -2,7 +2,7 @@
  * @Author: Yuk1ha
  * @Date: 2024-07-09 22:48:39
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-07-10 00:00:34
+ * @LastEditTime: 2024-07-10 23:40:09
  * @FilePath: \yukiha-bi\src\stores\rect.js
  */
 import { ElMessage } from 'element-plus'
@@ -98,10 +98,23 @@ export const useRectStore = defineStore('RectStore ', {
     },
     // 添加图形
     addRect(rect) {
-
       this.rects.push(rect)
-      ElMessage.success("添加成功")
+      this.enableActive(rect.id)
+      ElMessage.success("添加成功!")
+    },
+    // 删除图形
+    deleteRect() {
+      if (!this.activeRectId) {
+        console.log(this.activeRectId);
+        ElMessage.error("删除失败！")
+        return
+      }
+      const index = this.rects.findIndex(item => item.id === this.activeRectId)
+      this.rects.splice(index, 1)
+      this.activeRectId = null
+      ElMessage.success("删除成功!")
     }
+
   },
   getters: {
     activeRect: (state) => {
