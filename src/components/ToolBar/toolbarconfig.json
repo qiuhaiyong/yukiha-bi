@@ -1,0 +1,35 @@
+[
+  {
+    "title": "饼状图",
+    "icon": "fa-solid fa-chart-pie",
+    "rectList": [
+      {
+        "title": "基本饼图",
+        "icon": "fa-solid fa-chart-pie",
+        "key": "basicPie"
+      }
+    ]
+  },
+  {
+    "title": "柱状图",
+    "icon": "fa-solid fa-chart-bar",
+    "rectList": [
+      {
+        "title": "基本柱状图",
+        "icon": "fa-solid fa-chart-bar",
+        "key": "basicBar"
+      }
+    ]
+  },
+  {
+    "title": "折线图",
+    "icon": "fa-solid fa-chart-line",
+    "rectList": [
+      {
+        "title": "基本折线图",
+        "icon": "fa-solid fa-chart-line",
+        "key": "basicLine"
+      }
+    ]
+  }
+]

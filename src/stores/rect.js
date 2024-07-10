@@ -5,8 +5,8 @@
  * @LastEditTime: 2024-07-10 00:00:34
  * @FilePath: \yukiha-bi\src\stores\rect.js
  */
+import { ElMessage } from 'element-plus'
 import { defineStore } from 'pinia'
-
 export const useRectStore = defineStore('RectStore ', {
   state: () => {
     return {
@@ -38,7 +38,7 @@ export const useRectStore = defineStore('RectStore ', {
           height: 150,
           top: 170,
           left: 10,
-          zIndex: 2,
+          zIndex: 3,
           color: '#81D4FA',
           active: false
         },
@@ -95,6 +95,17 @@ export const useRectStore = defineStore('RectStore ', {
       }
       const index = this.rects.findIndex(item => item.id === id)
       this.rects[index].height = height
+    },
+    // 添加图形
+    addRect(rect) {
+
+      this.rects.push(rect)
+      ElMessage.success("添加成功")
+    }
+  },
+  getters: {
+    activeRect: (state) => {
+      return state.rects.find(item => item.id === state.activeRectId) ?? null
     }
   }
 })

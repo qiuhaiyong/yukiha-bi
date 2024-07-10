@@ -11,7 +11,7 @@
 
 <script setup></script>
 
-<style>
+<style scoped>
 .zindex-bar-container {
   width: var(--zindex-panel-width);
   height: calc(100vh - var(--tool-bar-height));

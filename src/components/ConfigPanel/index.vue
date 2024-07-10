@@ -1,32 +1,45 @@
-<!--
- * @Author: Yuk1ha
- * @Date: 2024-07-09 22:48:39
- * @LastEditors: Do not edit
- * @LastEditTime: 2024-07-10 00:37:50
- * @FilePath: \yukiha-bi\src\components\ConfigPanel\index.vue
--->
 <template>
-  <div class="config-panel-container">
-    <el-tabs v-model="activeName" stretch @tab-click="handleClick">
-      <el-tab-pane label="User" name="first">11111</el-tab-pane>
-      <el-tab-pane label="Config" name="second">2222</el-tab-pane>
+  <div class="config-panel-container" @mousedown.stop>
+    <el-tabs v-model="tabOneActiveName" stretch v-if="activeRect">
+      <el-tab-pane label="配置" name="config">
+        <!-- 基础配置 -->
+        <BasicConfig v-model="configModel"></BasicConfig>
+        <!-- 视图模式 -->
+
+        <!-- js模式 -->
+      </el-tab-pane>
+      <el-tab-pane label="数据" name="data">数据</el-tab-pane>
+    </el-tabs>
+    <el-tabs v-model="tabTowActiveName" stretch v-else>
+      <el-tab-pane label="大屏配置" name="screenConfig">大屏配置</el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const activeName = ref('first')
+import BasicConfig from '@/components/BasicConfig/index.vue'
+import useRectStore from '@/stores/rect'
+import { computed, ref } from 'vue'
 
-const handleClick = (tab, event) => {
-  console.log(tab, event)
-}
+const rectSotre = useRectStore()
+
+const tabOneActiveName = ref('config')
+
+const tabTowActiveName = ref('screenConfig')
+
+// view:视图模式 js：js模式
+const configModel = ref('view')
+
+const activeRect = computed(() => rectSotre.activeRect)
 </script>
 
-<style>
+<style scoped>
 .config-panel-container {
   width: var(--config-panel-width);
   height: calc(100vh - var(--tool-bar-height));
   border-left: 1px solid var(--el-border-color-light);
+  :deep(.el-tabs__content) {
+    padding: 0 10px;
+  }
 }
 </style>

@@ -8,14 +8,17 @@
         :h="rect.height"
         :x="rect.left"
         :y="rect.top"
+        :z="rect.zIndex"
         :isActive="rect.active"
-        :parentScaleX="0.7"
-        :parentScaleY="0.7"
+        :parentScaleX="0.6"
+        :parentScaleY="0.6"
         :parentLimitation="true"
         @activated="activateEv(rect.id)"
         @deactivated="deactivateEv(rect.id)"
         @dragging="changeDimensions($event, rect.id)"
         @resizing="changeDimensions($event, rect.id)"
+        @click.right.native.prevent="contextMenu"
+        @mousedown.stop
       >
         <div
           :style="{
@@ -31,14 +34,16 @@
 
 <script setup>
 import useRectStore from '@/stores/rect'
+import { useThrottleFn } from '@vueuse/core'
 import { ref } from 'vue'
+
 import VueDragResize from 'vue-drag-resize/src/component/vue-drag-resize.vue'
 
 // 画布样式配置
 const wrapperOptions = ref({
   width: '1920px',
   height: '1080px',
-  transform: 'scale(0.7) translate(-50%, -50%)'
+  transform: 'scale(0.6) translate(-50%, -50%)'
 })
 
 const rectSotre = useRectStore()
@@ -57,15 +62,20 @@ const deactivateEv = (id) => {
 }
 
 // 改变尺寸、位置
-const changeDimensions = (newRect) => {
+const changeDimensions = useThrottleFn((newRect) => {
   rectSotre.changeTop(newRect.top)
   rectSotre.changeLeft(newRect.left)
   rectSotre.changeWidth(newRect.width)
   rectSotre.changeHeight(newRect.height)
+}, 50)
+
+// 右键
+const contextMenu = (e) => {
+  console.log(e)
 }
 </script>
 
-<style>
+<style scoped>
 .screen-wrapper-container {
   flex: 1;
   overflow: auto;
