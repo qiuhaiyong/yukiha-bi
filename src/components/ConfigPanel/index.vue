@@ -20,7 +20,9 @@
 import BasicConfig from '@/components/BasicConfig/index.vue'
 import useRectStore from '@/stores/rect'
 import { computed, ref } from 'vue'
-
+defineOptions({
+  name: 'ConfigPanel'
+})
 const rectSotre = useRectStore()
 
 const tabOneActiveName = ref('config')

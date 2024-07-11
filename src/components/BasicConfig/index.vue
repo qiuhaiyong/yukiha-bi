@@ -22,6 +22,9 @@
           <el-input-number v-model="top" controls-position="right" />
         </el-space>
       </el-form-item>
+      <el-form-item label="图表名称">
+        <el-input v-model="name" />
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -29,7 +32,9 @@
 <script setup>
 import useRectStore from '@/stores/rect'
 import { computed } from 'vue'
-
+defineOptions({
+  name: 'BasicConfig'
+})
 const props = defineProps(['modelValue'])
 
 const emits = defineEmits(['update:modelValue'])
@@ -56,6 +61,11 @@ const top = computed({
 const left = computed({
   get: () => activeRect.value?.left,
   set: (val) => rectSotre.changeLeft(val)
+})
+
+const name = computed({
+  get: () => activeRect.value.name,
+  set: (val) => rectSotre.changeName(val)
 })
 </script>
 

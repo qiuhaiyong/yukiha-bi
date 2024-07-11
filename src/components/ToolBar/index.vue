@@ -64,7 +64,9 @@ import { cloneDeep } from 'lodash'
 import { nanoid } from 'nanoid'
 import rectconfig from './rectconfig'
 import config from './toolbarconfig.json'
-
+defineOptions({
+  name: 'ToolBar'
+})
 const rectSotre = useRectStore()
 
 // 随机颜色
@@ -82,7 +84,6 @@ const addRect = (key) => {
   const rect = cloneDeep(rectconfig[key])
   rect.id = nanoid()
   rect.zIndex = rectSotre.rects.length + 1
-  rect.color = getRandomColor()
   rectSotre.addRect(rect)
 }
 </script>
