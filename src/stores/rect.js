@@ -7,83 +7,12 @@
  */
 import { ElMessage } from 'element-plus'
 import { defineStore } from 'pinia'
+import ChartsActions from './rect-charts-actions'
 export const useRectStore = defineStore('RectStore ', {
   state: () => {
     return {
       activeRectId: null,
-      rects: [
-        {
-          width: 493,
-          height: 268,
-          top: 357,
-          left: 0,
-          zIndex: 3,
-          active: false,
-          type: 'Echarts-Line',
-          title: '基本折线图',
-          name: '基本折线图',
-          icon: 'fa-solid fa-chart-line',
-          options: {
-            xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
-            yAxis: { type: 'value' },
-            series: [{ data: [150, 230, 224, 218, 135, 147, 260], type: 'line' }]
-          },
-          id: '8W4IMF5gJ6CWAGRq1CQWg'
-        },
-        {
-          width: 490,
-          height: 330,
-          top: 0,
-          left: 540,
-          zIndex: 2,
-          active: false,
-          type: 'Echarts-Bar',
-          title: '基本柱状图',
-          name: '基本柱状图',
-          icon: 'fa-solid fa-chart-bar',
-          options: {
-            xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
-            yAxis: { type: 'value' },
-            series: [{ data: [120, 200, 150, 80, 70, 110, 130], type: 'bar' }]
-          },
-          id: 'fH7fXdQUsBAi7RloS9g7V'
-        },
-        {
-          width: 501,
-          height: 340,
-          top: 0,
-          left: 0,
-          zIndex: 1,
-          active: false,
-          type: 'Echarts-Pie',
-          title: '基本饼图',
-          name: '基本饼图',
-          icon: 'fa-solid fa-chart-pie',
-          options: {
-            tooltip: { trigger: 'item' },
-            legend: { top: '5%', left: 'center' },
-            series: [
-              {
-                name: 'Access From',
-                type: 'pie',
-                radius: ['40%', '70%'],
-                avoidLabelOverlap: false,
-                label: { show: false, position: 'center' },
-                emphasis: { label: { show: true, fontSize: 40, fontWeight: 'bold' } },
-                labelLine: { show: false },
-                data: [
-                  { value: 1048, name: 'Search Engine' },
-                  { value: 735, name: 'Direct' },
-                  { value: 580, name: 'Email' },
-                  { value: 484, name: 'Union Ads' },
-                  { value: 300, name: 'Video Ads' }
-                ]
-              }
-            ]
-          },
-          id: '7Ey_Dsh6VK2_ZksN3zAck'
-        }
-      ]
+      rects: []
     }
   },
   actions: {
@@ -215,7 +144,6 @@ export const useRectStore = defineStore('RectStore ', {
     // 删除图形
     deleteRect() {
       if (!this.activeRectId) {
-        console.log(this.activeRectId)
         ElMessage.error('删除失败！')
         return
       }
@@ -223,7 +151,21 @@ export const useRectStore = defineStore('RectStore ', {
       this.rects.splice(index, 1)
       this.activeRectId = null
       ElMessage.success('删除成功!')
-    }
+    },
+    // 通过id删除图形
+    deleteRectById(id) {
+      if (!id) {
+        ElMessage.error('删除失败！')
+        return
+      }
+      const index = this.rects.findIndex((item) => item.id === id)
+      if (id === this.activeRectId) {
+        this.activeRectId = null
+      }
+      this.rects.splice(index, 1)
+      ElMessage.success('删除成功!')
+    },
+    ...ChartsActions
   },
   getters: {
     activeRect: (state) => {

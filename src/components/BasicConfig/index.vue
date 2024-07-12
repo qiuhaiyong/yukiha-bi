@@ -64,7 +64,7 @@ const left = computed({
 })
 
 const name = computed({
-  get: () => activeRect.value.name,
+  get: () => activeRect.value?.name,
   set: (val) => rectSotre.changeName(val)
 })
 </script>

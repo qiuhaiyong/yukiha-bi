@@ -13,8 +13,33 @@ export default {
     name: '基本饼图',
     icon: 'fa-solid fa-chart-pie',
     options: {
+      title: {
+        show: false,
+        text: '',
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 18,
+          color: '#333',
+          fontWeight: 'normal'
+        },
+        padding: 10,
+        left: 'center',
+        top: 'top'
+      },
       tooltip: {
-        trigger: 'item'
+        show: true,
+        trigger: 'item',
+        triggerOn: 'mousemove|click',
+        hideDelay: 100,
+        backgroundColor: 'rgba(255,255,255,1)',
+        borderColor: '#333',
+        borderWidth: 0,
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 14,
+          color: '#333',
+          fontWeight: 'normal'
+        }
       },
       legend: {
         top: '5%',
@@ -64,6 +89,34 @@ export default {
     name: '基本柱状图',
     icon: 'fa-solid fa-chart-bar',
     options: {
+      title: {
+        show: false,
+        text: '',
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 18,
+          color: '#333',
+          fontWeight: 'normal'
+        },
+        padding: 10,
+        left: 'center',
+        top: 'top'
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        triggerOn: 'mousemove|click',
+        hideDelay: 100,
+        backgroundColor: 'rgba(255,255,255,1)',
+        borderColor: '#333',
+        borderWidth: 0,
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 14,
+          color: '#333',
+          fontWeight: 'normal'
+        }
+      },
       xAxis: {
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -92,6 +145,34 @@ export default {
     name: '基本折线图',
     icon: 'fa-solid fa-chart-line',
     options: {
+      title: {
+        show: false,
+        text: '',
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 18,
+          color: '#333',
+          fontWeight: 'normal'
+        },
+        padding: 10,
+        left: 'center',
+        top: 'top'
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        triggerOn: 'mousemove|click',
+        hideDelay: 100,
+        backgroundColor: 'rgba(255,255,255,1)',
+        borderColor: '#333',
+        borderWidth: 0,
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 14,
+          color: '#333',
+          fontWeight: 'normal'
+        }
+      },
       xAxis: {
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
