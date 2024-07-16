@@ -119,7 +119,7 @@ const changeDimensions = useThrottleFn((newRect) => {
   rectSotre.changeLeft(newRect.left)
   rectSotre.changeWidth(newRect.width)
   rectSotre.changeHeight(newRect.height)
-}, 50)
+}, 40)
 
 // 右键
 const contextMenu = (e) => {

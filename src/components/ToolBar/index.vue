@@ -69,16 +69,6 @@ defineOptions({
 })
 const rectSotre = useRectStore()
 
-// 随机颜色
-const getRandomColor = () => {
-  let letters = '0123456789ABCDEF'
-  let color = '#'
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)]
-  }
-  return color
-}
-
 // 添加图形
 const addRect = (key) => {
   const rect = cloneDeep(rectconfig[key])

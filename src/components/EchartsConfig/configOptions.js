@@ -98,5 +98,49 @@ export default {
       label: '不触发',
       value: 'none'
     }
+  ],
+  orientOptions: [
+    {
+      label: '水平方向',
+      value: 'horizontal'
+    },
+    {
+      label: '垂直方向',
+      value: 'vertical'
+    }
+  ],
+  iconOptions: [
+    {
+      label: '矩形',
+      value: 'rect'
+    },
+    {
+      label: '圆形',
+      value: 'circle'
+    },
+    {
+      label: '圆矩形',
+      value: 'roundRect'
+    },
+    {
+      label: '三角形',
+      value: 'triangle'
+    },
+    {
+      label: '棱形',
+      value: 'diamond'
+    },
+    {
+      label: '针',
+      value: 'pin'
+    },
+    {
+      label: '箭头',
+      value: 'arrow'
+    },
+    {
+      label: '无',
+      value: 'none'
+    }
   ]
 }

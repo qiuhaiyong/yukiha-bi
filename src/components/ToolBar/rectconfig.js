@@ -13,6 +13,19 @@ export default {
     name: '基本饼图',
     icon: 'fa-solid fa-chart-pie',
     options: {
+      color: [
+        '#c23531',
+        '#2f4554',
+        '#61a0a8',
+        '#d48265',
+        '#91c7ae',
+        '#749f83',
+        '#ca8622',
+        '#bda29a',
+        '#6e7074',
+        '#546570',
+        '#c4ccd3'
+      ],
       title: {
         show: false,
         text: '',
@@ -42,8 +55,21 @@ export default {
         }
       },
       legend: {
-        top: '5%',
-        left: 'center'
+        show: true,
+        left: 'center',
+        top: 'top',
+        orient: 'horizontal',
+        itemGap: 5,
+        itemWidth: 25,
+        itemHeight: 14,
+        borderRadius: 5,
+        icon: 'circle',
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 12,
+          color: '#333',
+          fontWeight: 'normal'
+        }
       },
       series: [
         {

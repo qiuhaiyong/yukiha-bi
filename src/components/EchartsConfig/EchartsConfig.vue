@@ -1,7 +1,11 @@
 <template>
   <div class="demo-collapse">
-    <el-collapse v-model="activeNames" @change="handleChange">
+    <el-collapse v-model="activeNames">
       <CommonConfig></CommonConfig>
+      <!-- 图例配置 -->
+      <LegendConfig v-show="['Echarts-Pie'].includes(activeRect?.type)"></LegendConfig>
+      <!-- 颜色配置 -->
+      <ColorConfig v-show="['Echarts-Pie'].includes(activeRect?.type)"></ColorConfig>
       <el-collapse-item title="Consistency" name="1">
         <div>
           Consistent with real life: in line with the process and logic of real life, and comply
@@ -37,12 +41,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import useRectStore from '@/stores/rect'
+import { computed, ref } from 'vue'
+import ColorConfig from './ColorConfig.vue'
 import CommonConfig from './CommonConfig.vue'
+import LegendConfig from './LegendConfig.vue'
+const rectSotre = useRectStore()
+
 const activeNames = ref([])
-const handleChange = (val) => {
-  console.log(val)
-}
+
+const activeRect = computed(() => rectSotre.activeRect)
 </script>
 
 <style scoped></style>
