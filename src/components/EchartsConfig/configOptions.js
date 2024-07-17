@@ -142,5 +142,37 @@ export default {
       label: '无',
       value: 'none'
     }
+  ],
+  positionOptions: [
+    {
+      label: '饼图扇区外侧',
+      value: 'outside'
+    },
+    {
+      label: '饼图扇区内部',
+      value: 'inside'
+    },
+    {
+      label: '饼图中心位置',
+      value: 'center'
+    }
+  ],
+  axisTypeOptions: [
+    {
+      label: '数值轴',
+      value: 'value'
+    },
+    {
+      label: '类目轴',
+      value: 'category'
+    },
+    {
+      label: '时间轴',
+      value: 'time'
+    },
+    {
+      label: '对数轴',
+      value: 'log'
+    }
   ]
 }

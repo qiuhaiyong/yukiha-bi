@@ -1,21 +1,23 @@
 <template>
   <div class="demo-collapse">
     <el-collapse v-model="activeNames">
+      <!-- 公共配置 -->
       <CommonConfig></CommonConfig>
-      <!-- 图例配置 -->
-      <LegendConfig v-show="['Echarts-Pie'].includes(activeRect?.type)"></LegendConfig>
       <!-- 颜色配置 -->
-      <ColorConfig v-show="['Echarts-Pie'].includes(activeRect?.type)"></ColorConfig>
-      <el-collapse-item title="Consistency" name="1">
-        <div>
-          Consistent with real life: in line with the process and logic of real life, and comply
-          with languages and habits that the users are used to;
-        </div>
-        <div>
-          Consistent within interface: all elements should be consistent, such as: design style,
-          icons and texts, position of elements, etc.
-        </div>
-      </el-collapse-item>
+      <ColorConfig></ColorConfig>
+      <!-- 图例配置 -->
+      <LegendConfig
+        v-show="['Echarts-Pie', 'Echarts-Line', 'Echarts-Bar'].includes(activeRect?.type)"
+      >
+      </LegendConfig>
+      <!-- Grid配置 -->
+      <GridConfig v-show="['Echarts-Line', 'Echarts-Bar'].includes(activeRect?.type)"></GridConfig>
+      <!-- x轴配置 -->
+      <XAxisConfig v-show="['Echarts-Line', 'Echarts-Bar'].includes(activeRect?.type)">
+      </XAxisConfig>
+      <!-- 饼图系列配置 -->
+      <PieSeriesConfig v-show="['Echarts-Pie'].includes(activeRect?.type)"></PieSeriesConfig>
+
       <el-collapse-item title="Feedback" name="2">
         <div>
           Operation feedback: enable the users to clearly perceive their operations by style updates
@@ -45,7 +47,10 @@ import useRectStore from '@/stores/rect'
 import { computed, ref } from 'vue'
 import ColorConfig from './ColorConfig.vue'
 import CommonConfig from './CommonConfig.vue'
+import GridConfig from './GridConfig.vue'
 import LegendConfig from './LegendConfig.vue'
+import PieSeriesConfig from './PieSeriesConfig.vue'
+import XAxisConfig from './XAxisConfig.vue'
 const rectSotre = useRectStore()
 
 const activeNames = ref([])

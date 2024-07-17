@@ -2,8 +2,8 @@
 export default {
   // 饼状图
   basicPie: {
-    width: 200,
-    height: 150,
+    width: 500,
+    height: 300,
     top: 540,
     left: 960,
     zIndex: 1,
@@ -14,8 +14,8 @@ export default {
     icon: 'fa-solid fa-chart-pie',
     options: {
       color: [
-        '#c23531',
         '#2f4554',
+        '#c23531',
         '#61a0a8',
         '#d48265',
         '#91c7ae',
@@ -73,24 +73,33 @@ export default {
       },
       series: [
         {
-          name: 'Access From',
+          name: 'series one',
           type: 'pie',
-          radius: ['40%', '70%'],
-          avoidLabelOverlap: false,
           label: {
-            show: false,
-            position: 'center'
-          },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: 40,
-              fontWeight: 'bold'
-            }
+            show: true,
+            fontFamily: 'sans-serif',
+            fontSize: 12,
+            fontWeight: 'normal',
+            position: 'inside'
           },
           labelLine: {
-            show: false
+            show: true,
+            length: 10,
+            length2: 20,
+            smooth: true
           },
+          radius: ['40%', '70%'],
+          center: ['50%', '50%'],
+          roseType: false,
+          // avoidLabelOverlap: true,
+          // emphasis: {
+          //   label: {
+          //     show: true,
+          //     fontSize: 40,
+          //     fontWeight: 'bold'
+          //   }
+          // },
+
           data: [
             { value: 1048, name: 'Search Engine' },
             { value: 735, name: 'Direct' },
@@ -104,8 +113,8 @@ export default {
   },
   // 柱状图
   basicBar: {
-    width: 200,
-    height: 150,
+    width: 500,
+    height: 300,
     top: 540,
     left: 960,
     zIndex: 1,
@@ -115,6 +124,26 @@ export default {
     name: '基本柱状图',
     icon: 'fa-solid fa-chart-bar',
     options: {
+      grid: {
+        containLabel: true,
+        top: 50,
+        right: 50,
+        bottom: 50,
+        left: 50
+      },
+      color: [
+        '#2f4554',
+        '#c23531',
+        '#61a0a8',
+        '#d48265',
+        '#91c7ae',
+        '#749f83',
+        '#ca8622',
+        '#bda29a',
+        '#6e7074',
+        '#546570',
+        '#c4ccd3'
+      ],
       title: {
         show: false,
         text: '',
@@ -144,14 +173,47 @@ export default {
         }
       },
       xAxis: {
+        show: true,
         type: 'category',
+        name: 'x轴',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
+        axisLabel: {
+          show: true,
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       },
       yAxis: {
         type: 'value'
       },
+      legend: {
+        show: false,
+        left: 'center',
+        top: 'top',
+        orient: 'horizontal',
+        itemGap: 5,
+        itemWidth: 25,
+        itemHeight: 14,
+        borderRadius: 5,
+        icon: 'circle',
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 12,
+          color: '#333',
+          fontWeight: 'normal'
+        }
+      },
       series: [
         {
+          name: 'series one',
           data: [120, 200, 150, 80, 70, 110, 130],
           type: 'bar'
         }
@@ -160,8 +222,8 @@ export default {
   },
   // 折线图
   basicLine: {
-    width: 200,
-    height: 150,
+    width: 500,
+    height: 300,
     top: 540,
     left: 960,
     zIndex: 1,
@@ -171,6 +233,26 @@ export default {
     name: '基本折线图',
     icon: 'fa-solid fa-chart-line',
     options: {
+      grid: {
+        containLabel: true,
+        top: 50,
+        right: 50,
+        bottom: 50,
+        left: 50
+      },
+      color: [
+        '#2f4554',
+        '#c23531',
+        '#61a0a8',
+        '#d48265',
+        '#91c7ae',
+        '#749f83',
+        '#ca8622',
+        '#bda29a',
+        '#6e7074',
+        '#546570',
+        '#c4ccd3'
+      ],
       title: {
         show: false,
         text: '',
@@ -200,14 +282,47 @@ export default {
         }
       },
       xAxis: {
+        show: true,
         type: 'category',
+        name: 'x轴',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
+        axisLabel: {
+          show: true,
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       },
       yAxis: {
         type: 'value'
       },
+      legend: {
+        show: false,
+        left: 'center',
+        top: 'top',
+        orient: 'horizontal',
+        itemGap: 5,
+        itemWidth: 25,
+        itemHeight: 14,
+        borderRadius: 5,
+        icon: 'circle',
+        textStyle: {
+          fontFamily: 'sans-serif',
+          fontSize: 12,
+          color: '#333',
+          fontWeight: 'normal'
+        }
+      },
       series: [
         {
+          name: 'series one',
           data: [150, 230, 224, 218, 135, 147, 260],
           type: 'line'
         }
