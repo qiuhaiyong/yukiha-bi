@@ -1,9 +1,9 @@
 <template>
-  <el-collapse-item title="x轴" name="xAxis">
+  <el-collapse-item title="y轴" name="yAxis">
     <div class="gird-config-container config-container">
       <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="类型">
-          <el-select v-model="xAxisType">
+          <el-select v-model="yAxisType">
             <el-option
               v-for="item in configOptions.axisTypeOptions"
               :label="item.label"
@@ -17,11 +17,11 @@
           <div class="config-container">
             <el-form :label-position="'left'" label-width="100px">
               <el-form-item label="编辑">
-                <el-switch v-model="xAxisLabelShow"></el-switch>
+                <el-switch v-model="yAxisLabelShow"></el-switch>
               </el-form-item>
-              <div v-if="xAxisLabelShow">
+              <div v-if="yAxisLabelShow">
                 <el-form-item label="文字字体">
-                  <el-select v-model="xAxisLabelFontFamily">
+                  <el-select v-model="yAxisLabelFontFamily">
                     <el-option
                       v-for="item in configOptions.fontFamliyOptions"
                       :label="item.label"
@@ -30,10 +30,10 @@
                   </el-select>
                 </el-form-item>
                 <el-form-item label="文字大小">
-                  <el-input-number v-model="xAxisLabelFontSize" :min="1" />
+                  <el-input-number v-model="yAxisLabelFontSize" :min="1" />
                 </el-form-item>
                 <el-form-item label="文字粗细">
-                  <el-select v-model="xAxisLabelFontWight">
+                  <el-select v-model="yAxisLabelFontWight">
                     <el-option
                       v-for="item in configOptions.fontWeightOptions"
                       :label="item.label"
@@ -42,7 +42,7 @@
                   </el-select>
                 </el-form-item>
                 <el-form-item label="文字颜色">
-                  <el-color-picker v-model="xAxisLabelColor" />
+                  <el-color-picker v-model="yAxisLabelColor" />
                 </el-form-item>
               </div>
             </el-form>
@@ -52,10 +52,10 @@
           <div class="config-container">
             <el-form :label-position="'left'" label-width="100px">
               <el-form-item label="单位">
-                <el-input v-model="xAxisName"></el-input>
+                <el-input v-model="yAxisName"></el-input>
               </el-form-item>
               <el-form-item label="文字字体">
-                <el-select v-model="xAxisNameFontFamily">
+                <el-select v-model="yAxisNameFontFamily">
                   <el-option
                     v-for="item in configOptions.fontFamliyOptions"
                     :label="item.label"
@@ -64,10 +64,10 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="文字大小">
-                <el-input-number v-model="xAxisNameFontSize" :min="1" />
+                <el-input-number v-model="yAxisNameFontSize" :min="1" />
               </el-form-item>
               <el-form-item label="文字粗细">
-                <el-select v-model="xAxisNameFontWight">
+                <el-select v-model="yAxisNameFontWight">
                   <el-option
                     v-for="item in configOptions.fontWeightOptions"
                     :label="item.label"
@@ -76,7 +76,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="文字颜色">
-                <el-color-picker v-model="xAxisNameColor" />
+                <el-color-picker v-model="yAxisNameColor" />
               </el-form-item>
             </el-form>
           </div>
@@ -85,13 +85,13 @@
           <div class="config-container">
             <el-form :label-position="'left'" label-width="100px">
               <el-form-item label="显示">
-                <el-switch v-model="xAxisTickShow"></el-switch>
+                <el-switch v-model="yAxisTickShow"></el-switch>
               </el-form-item>
               <el-form-item label="是否朝内">
-                <el-switch v-model="xAxisTickInside"></el-switch>
+                <el-switch v-model="yAxisTickInside"></el-switch>
               </el-form-item>
               <el-form-item label="长度">
-                <el-input-number v-model="xAxisTickLength" :min="0" />
+                <el-input-number v-model="yAxisTickLength" :min="0" />
               </el-form-item>
             </el-form>
           </div>
@@ -100,7 +100,7 @@
           <div class="config-container">
             <el-form :label-position="'left'" label-width="100px">
               <el-form-item label="显示">
-                <el-switch v-model="xAxisLineShow"></el-switch>
+                <el-switch v-model="yAxisLineShow"></el-switch>
               </el-form-item>
             </el-form>
           </div>
@@ -119,79 +119,79 @@ const rectSotre = useRectStore()
 
 const activeRect = computed(() => rectSotre.activeRect)
 
-const xAxisType = computed({
-  get: () => activeRect.value?.options?.xAxis?.type,
-  set: (val) => rectSotre.changeXAxis(val, 'type')
+const yAxisType = computed({
+  get: () => activeRect.value?.options?.yAxis?.type,
+  set: (val) => rectSotre.changeYAxis(val, 'type')
 })
 const activeNames = ref([])
 
-const xAxisLabelShow = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisLabel?.show,
-  set: (val) => rectSotre.changeXAxisLabel(val, 'show')
+const yAxisLabelShow = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisLabel?.show,
+  set: (val) => rectSotre.changeYAxisLabel(val, 'show')
 })
 
-const xAxisLabelFontFamily = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisLabel?.fontFamily,
-  set: (val) => rectSotre.changeXAxisLabel(val, 'fontFamily')
+const yAxisLabelFontFamily = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisLabel?.fontFamily,
+  set: (val) => rectSotre.changeYAxisLabel(val, 'fontFamily')
 })
 
-const xAxisLabelFontSize = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisLabel?.fontSize,
-  set: (val) => rectSotre.changeXAxisLabel(val, 'fontSize')
+const yAxisLabelFontSize = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisLabel?.fontSize,
+  set: (val) => rectSotre.changeYAxisLabel(val, 'fontSize')
 })
 
-const xAxisLabelFontWight = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisLabel?.fontWeight,
-  set: (val) => rectSotre.changeXAxisLabel(val, 'fontWeight')
+const yAxisLabelFontWight = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisLabel?.fontWeight,
+  set: (val) => rectSotre.changeYAxisLabel(val, 'fontWeight')
 })
 
-const xAxisLabelColor = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisLabel?.color,
-  set: (val) => rectSotre.changeXAxisLabel(val, 'color')
+const yAxisLabelColor = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisLabel?.color,
+  set: (val) => rectSotre.changeYAxisLabel(val, 'color')
 })
 
-const xAxisName = computed({
-  get: () => activeRect.value?.options?.xAxis?.name,
-  set: (val) => rectSotre.changeXAxis(val, 'name')
+const yAxisName = computed({
+  get: () => activeRect.value?.options?.yAxis?.name,
+  set: (val) => rectSotre.changeYAxis(val, 'name')
 })
-const xAxisNameFontFamily = computed({
-  get: () => activeRect.value?.options?.xAxis?.nameTextStyle?.fontFamily,
-  set: (val) => rectSotre.changeXAxisNameTextStyle(val, 'fontFamily')
-})
-
-const xAxisNameFontSize = computed({
-  get: () => activeRect.value?.options?.xAxis?.nameTextStyle?.fontSize,
-  set: (val) => rectSotre.changeXAxisNameTextStyle(val, 'fontSize')
+const yAxisNameFontFamily = computed({
+  get: () => activeRect.value?.options?.yAxis?.nameTextStyle?.fontFamily,
+  set: (val) => rectSotre.changeYAxisNameTextStyle(val, 'fontFamily')
 })
 
-const xAxisNameFontWight = computed({
-  get: () => activeRect.value?.options?.xAxis?.nameTextStyle?.fontWeight,
-  set: (val) => rectSotre.changeXAxisNameTextStyle(val, 'fontWeight')
+const yAxisNameFontSize = computed({
+  get: () => activeRect.value?.options?.yAxis?.nameTextStyle?.fontSize,
+  set: (val) => rectSotre.changeYAxisNameTextStyle(val, 'fontSize')
 })
 
-const xAxisNameColor = computed({
-  get: () => activeRect.value?.options?.xAxis?.nameTextStyle?.color,
-  set: (val) => rectSotre.changeXAxisNameTextStyle(val, 'color')
+const yAxisNameFontWight = computed({
+  get: () => activeRect.value?.options?.yAxis?.nameTextStyle?.fontWeight,
+  set: (val) => rectSotre.changeYAxisNameTextStyle(val, 'fontWeight')
 })
 
-const xAxisTickShow = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisTick?.show,
-  set: (val) => rectSotre.changeXAxisTick(val, 'show')
+const yAxisNameColor = computed({
+  get: () => activeRect.value?.options?.yAxis?.nameTextStyle?.color,
+  set: (val) => rectSotre.changeYAxisNameTextStyle(val, 'color')
 })
 
-const xAxisTickInside = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisTick?.inside,
-  set: (val) => rectSotre.changeXAxisTick(val, 'inside')
+const yAxisTickShow = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisTick?.show,
+  set: (val) => rectSotre.changeYAxisTick(val, 'show')
 })
 
-const xAxisTickLength = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisTick?.length,
-  set: (val) => rectSotre.changeXAxisTick(val, 'length')
+const yAxisTickInside = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisTick?.inside,
+  set: (val) => rectSotre.changeYAxisTick(val, 'inside')
 })
 
-const xAxisLineShow = computed({
-  get: () => activeRect.value?.options?.xAxis?.axisLine?.show,
-  set: (val) => rectSotre.changeXAxisLine(val, 'show')
+const yAxisTickLength = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisTick?.length,
+  set: (val) => rectSotre.changeYAxisTick(val, 'length')
+})
+
+const yAxisLineShow = computed({
+  get: () => activeRect.value?.options?.yAxis?.axisLine?.show,
+  set: (val) => rectSotre.changeYAxisLine(val, 'show')
 })
 </script>
 

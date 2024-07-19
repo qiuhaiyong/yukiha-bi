@@ -7,7 +7,6 @@
       <div class="rect-menu-container">
         <el-popover
           placement="bottom-start"
-          transition="el-zoom-in-top"
           :width="280"
           :show-after="0"
           :hide-after="10"

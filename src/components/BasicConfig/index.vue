@@ -1,6 +1,6 @@
 <template>
   <div class="basic-config-container">
-    <el-form :label-position="'left'" label-width="auto">
+    <el-form :label-position="'left'" label-width="70px">
       <el-form-item :label="'配置模式'">
         <el-radio-group
           :model-value="modelValue"

@@ -1,7 +1,7 @@
 <template>
   <el-collapse-item title="四周偏移量" name="grid">
     <div class="gird-config-container config-container">
-      <el-form :label-position="'left'" label-width="auto">
+      <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="上偏移量">
           <el-input-number v-model="gridTop" :min="0" />
         </el-form-item>

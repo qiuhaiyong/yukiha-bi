@@ -1,32 +1,66 @@
 <template>
   <el-collapse-item title="数据系列" name="lineSeries">
     <div class="pieseries-config-container config-container">
-      <el-form :label-position="'left'" label-width="auto">
+      <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="选择系列">
           <el-select v-model="activeSeriesIndex">
             <el-option v-for="item in seriesOptions" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
+        <el-form-item label="系列名称">
+          <el-input v-model="seriesName"></el-input>
+        </el-form-item>
+        <el-form-item label="标记图形">
+          <el-select v-model="seriesSymbol">
+            <el-option
+              v-for="item in configOptions.symbolOptions"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="标记图形大小">
+          <el-input-number v-model="seriesSymbolSize" :min="1" />
+        </el-form-item>
       </el-form>
       <el-collapse v-model="activeNames">
         <el-collapse-item title="标签" name="tag">
-          <div>
-            Operation feedback: enable the users to clearly perceive their operations by style
-            updates and interactive effects;
-          </div>
-          <div>
-            Visual feedback: reflect current state by updating or rearranging elements of the page.
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="Efficiency" name="3">
-          <div>Simplify the process: keep operating process simple and intuitive;</div>
-          <div>
-            Definite and clear: enunciate your intentions clearly so that the users can quickly
-            understand and make decisions;
-          </div>
-          <div>
-            Easy to identify: the interface should be straightforward, which helps the users to
-            identify and frees them from memorizing and recalling.
+          <div class="config-container">
+            <el-form :label-position="'left'" label-width="100px">
+              <el-form-item label="编辑">
+                <el-switch v-model="seriesLableShow"></el-switch>
+              </el-form-item>
+              <el-form-item label="字体">
+                <el-select v-model="seriesLabelFontFamily">
+                  <el-option
+                    v-for="item in configOptions.fontFamliyOptions"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="字号">
+                <el-input-number v-model="seriesLabelFontSize" :min="1" />
+              </el-form-item>
+              <el-form-item label="字体粗细">
+                <el-select v-model="seriesLabelFontWeight">
+                  <el-option
+                    v-for="item in configOptions.fontWeightOptions"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="标签位置">
+                <el-select v-model="seriesLabelPostion">
+                  <el-option
+                    v-for="item in configOptions.barPositionOptions"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+            </el-form>
           </div>
         </el-collapse-item>
       </el-collapse>
@@ -37,6 +71,7 @@
 <script setup>
 import useRectStore from '@/stores/rect'
 import { computed, ref } from 'vue'
+import configOptions from './configOptions'
 
 const rectSotre = useRectStore()
 
@@ -57,6 +92,46 @@ const activeSeries = computed(
   () => activeRect.value?.options?.series?.[activeSeriesIndex.value] || []
 )
 const activeNames = ref([])
+
+const seriesLableShow = computed({
+  get: () => activeSeries.value?.label?.show,
+  set: (val) => rectSotre.changeSeriesLabel(activeSeriesIndex.value, val, 'show')
+})
+
+const seriesName = computed({
+  get: () => activeSeries.value?.name,
+  set: (val) => rectSotre.changeSeriesNormal(activeSeriesIndex.value, val, 'name')
+})
+
+const seriesSymbol = computed({
+  get: () => activeSeries.value?.symbol,
+  set: (val) => rectSotre.changeSeriesNormal(activeSeriesIndex.value, val, 'symbol')
+})
+
+const seriesSymbolSize = computed({
+  get: () => activeSeries.value?.symbolSize,
+  set: (val) => rectSotre.changeSeriesNormal(activeSeriesIndex.value, val, 'symbolSize')
+})
+
+const seriesLabelFontFamily = computed({
+  get: () => activeSeries.value?.label?.fontFamily,
+  set: (val) => rectSotre.changeSeriesLabel(activeSeriesIndex.value, val, 'fontFamily')
+})
+
+const seriesLabelFontSize = computed({
+  get: () => activeSeries.value?.label?.fontSize,
+  set: (val) => rectSotre.changeSeriesLabel(activeSeriesIndex.value, val, 'fontSize')
+})
+
+const seriesLabelFontWeight = computed({
+  get: () => activeSeries.value?.label?.fontWeight,
+  set: (val) => rectSotre.changeSeriesLabel(activeSeriesIndex.value, val, 'fontWeight')
+})
+
+const seriesLabelPostion = computed({
+  get: () => activeSeries.value?.label?.position,
+  set: (val) => rectSotre.changeSeriesLabel(activeSeriesIndex.value, val, 'position')
+})
 </script>
 
 <style scoped>

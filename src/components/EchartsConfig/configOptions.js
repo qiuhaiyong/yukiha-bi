@@ -143,7 +143,7 @@ export default {
       value: 'none'
     }
   ],
-  positionOptions: [
+  piePositionOptions: [
     {
       label: '饼图扇区外侧',
       value: 'outside'
@@ -155,6 +155,56 @@ export default {
     {
       label: '饼图中心位置',
       value: 'center'
+    }
+  ],
+  barPositionOptions: [
+    {
+      label: '上',
+      value: 'top'
+    },
+    {
+      label: '左',
+      value: 'left'
+    },
+    {
+      label: '右',
+      value: 'right'
+    },
+    {
+      label: '下',
+      value: 'bottom'
+    },
+    {
+      label: '内部左',
+      value: 'insideLeft'
+    },
+    {
+      label: '内部右',
+      value: 'insideRight'
+    },
+    {
+      label: '内部上',
+      value: 'insideTop'
+    },
+    {
+      label: '内部下',
+      value: 'insideBottom'
+    },
+    {
+      label: '内部上左',
+      value: 'insideTopLeft'
+    },
+    {
+      label: '内部下左',
+      value: 'insideBottomLeft'
+    },
+    {
+      label: '内部上右',
+      value: 'insideTopRight'
+    },
+    {
+      label: '内部下右',
+      value: 'insideBottomRight'
     }
   ],
   axisTypeOptions: [
@@ -173,6 +223,44 @@ export default {
     {
       label: '对数轴',
       value: 'log'
+    }
+  ],
+  symbolOptions: [
+    {
+      label: '空心圆',
+      value: 'emptyCircle'
+    },
+    {
+      label: '圆',
+      value: 'circle'
+    },
+    {
+      label: '矩形',
+      value: 'rect'
+    },
+    {
+      label: '圆矩形',
+      value: 'roundRect'
+    },
+    {
+      label: '三角形',
+      value: 'triangle'
+    },
+    {
+      label: '钻石形',
+      value: 'diamond'
+    },
+    {
+      label: 'pin',
+      value: '针'
+    },
+    {
+      label: '箭头',
+      value: 'arrow'
+    },
+    {
+      label: '无',
+      value: 'none'
     }
   ]
 }

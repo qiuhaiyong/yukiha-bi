@@ -1,7 +1,7 @@
 <template>
   <el-collapse-item title="图例配置" name="legend">
     <div class="legend-config-container config-container">
-      <el-form :label-position="'left'" label-width="auto">
+      <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="显示图例">
           <el-switch v-model="showLegend"></el-switch>
         </el-form-item>

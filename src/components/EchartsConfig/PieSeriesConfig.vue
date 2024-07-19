@@ -1,7 +1,7 @@
 <template>
   <el-collapse-item title="数据系列" name="pieSeries">
     <div class="pieseries-config-container config-container">
-      <el-form :label-position="'left'" label-width="auto">
+      <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="选择系列">
           <el-select v-model="activeSeriesIndex">
             <el-option v-for="item in seriesOptions" :label="item.label" :value="item.value" />
@@ -29,7 +29,7 @@
       <el-collapse v-model="activeNames">
         <el-collapse-item title="标签" name="label">
           <div class="config-container">
-            <el-form :label-position="'left'" label-width="auto">
+            <el-form :label-position="'left'" label-width="100px">
               <el-form-item label="编辑">
                 <el-switch v-model="seriesLableShow"></el-switch>
               </el-form-item>
@@ -57,7 +57,7 @@
               <el-form-item label="标签位置">
                 <el-select v-model="seriesLabelPostion">
                   <el-option
-                    v-for="item in configOptions.positionOptions"
+                    v-for="item in configOptions.piePositionOptions"
                     :label="item.label"
                     :value="item.value"
                   />
@@ -68,7 +68,7 @@
         </el-collapse-item>
         <el-collapse-item title="标签线" name="labelLine">
           <div class="config-container">
-            <el-form :label-position="'left'" label-width="auto">
+            <el-form :label-position="'left'" label-width="100px">
               <el-form-item label="编辑">
                 <el-switch v-model="seriesLabelLineShow"></el-switch>
               </el-form-item>

@@ -12,6 +12,10 @@ export default {
     title: '基本饼图',
     name: '基本饼图',
     icon: 'fa-solid fa-chart-pie',
+    dataOptions: {
+      type: 'static',
+      data: []
+    },
     options: {
       color: [
         '#2f4554',
@@ -123,6 +127,9 @@ export default {
     title: '基本柱状图',
     name: '基本柱状图',
     icon: 'fa-solid fa-chart-bar',
+    dataOptions: {
+      type: 'static'
+    },
     options: {
       grid: {
         containLabel: true,
@@ -189,10 +196,40 @@ export default {
           fontFamily: 'sans-serif',
           fontSize: 12
         },
+        axisTick: {
+          show: true,
+          inside: false,
+          length: 5
+        },
+        axisLine: {
+          show: true
+        },
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        name: 'y轴',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
+        axisLabel: {
+          show: true,
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
+        axisTick: {
+          show: true,
+          inside: false,
+          length: 5
+        },
+        axisLine: {
+          show: true
+        }
       },
       legend: {
         show: false,
@@ -215,7 +252,15 @@ export default {
         {
           name: 'series one',
           data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+          type: 'bar',
+          barWidth: 10,
+          label: {
+            show: false,
+            fontFamily: 'sans-serif',
+            fontSize: 12,
+            fontWeight: 'normal',
+            position: 'top'
+          }
         }
       ]
     }
@@ -232,6 +277,9 @@ export default {
     title: '基本折线图',
     name: '基本折线图',
     icon: 'fa-solid fa-chart-line',
+    dataOptions: {
+      type: 'static'
+    },
     options: {
       grid: {
         containLabel: true,
@@ -298,10 +346,40 @@ export default {
           fontFamily: 'sans-serif',
           fontSize: 12
         },
+        axisTick: {
+          show: true,
+          inside: false,
+          length: 5
+        },
+        axisLine: {
+          show: true
+        },
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        name: 'y轴',
+        nameTextStyle: {
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
+        axisLabel: {
+          show: true,
+          color: '#333',
+          fontWeight: 'normal',
+          fontFamily: 'sans-serif',
+          fontSize: 12
+        },
+        axisTick: {
+          show: true,
+          inside: false,
+          length: 5
+        },
+        axisLine: {
+          show: true
+        }
       },
       legend: {
         show: false,
@@ -324,7 +402,16 @@ export default {
         {
           name: 'series one',
           data: [150, 230, 224, 218, 135, 147, 260],
-          type: 'line'
+          type: 'line',
+          symbol: 'emptyCircle',
+          symbolSize: 10,
+          label: {
+            show: false,
+            fontFamily: 'sans-serif',
+            fontSize: 12,
+            fontWeight: 'normal',
+            position: 'top'
+          }
         }
       ]
     }

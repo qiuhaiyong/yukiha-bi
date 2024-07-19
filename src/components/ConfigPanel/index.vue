@@ -6,12 +6,16 @@
         <BasicConfig v-model="configModel"></BasicConfig>
         <!-- 视图模式 -->
         <div class="view-model" v-if="configModel === 'view'">
-          <EchartsConfig></EchartsConfig>
+          <keep-alive>
+            <EchartsConfig v-if="activeRect?.type?.startsWith('Echarts')"></EchartsConfig>
+          </keep-alive>
         </div>
         <!-- js模式 -->
         <div class="js-model" v-else>js模式</div>
       </el-tab-pane>
-      <el-tab-pane label="数据" name="data">数据</el-tab-pane>
+      <el-tab-pane label="数据" name="data">
+        <DataConfig></DataConfig>
+      </el-tab-pane>
     </el-tabs>
     <el-tabs v-model="tabTowActiveName" stretch v-show="!activeRect">
       <el-tab-pane label="大屏配置" name="screenConfig">大屏配置</el-tab-pane>
@@ -21,6 +25,7 @@
 
 <script setup>
 import BasicConfig from '@/components/BasicConfig/index.vue'
+import DataConfig from '@/components/DataConfig/DataConfig.vue'
 import EchartsConfig from '@/components/EchartsConfig/EchartsConfig.vue'
 import useRectStore from '@/stores/rect'
 import { computed, ref } from 'vue'

@@ -86,7 +86,6 @@ export default {
     const index = this.rects.findIndex((item) => item.id === id)
     this.rects[index].options.series[seriesIndex][key] = val
   },
-
   changeSeriesLabel(seriesIndex, val, key) {
     const id = this.activeRectId
     if (id === null) {
@@ -155,5 +154,62 @@ export default {
     }
     const index = this.rects.findIndex((item) => item.id === id)
     this.rects[index].options.xAxis.nameTextStyle[key] = value
+  },
+  changeXAxisTick(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.xAxis.axisTick[key] = value
+  },
+  changeXAxisLine(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.xAxis.axisLine[key] = value
+  },
+  // yAxis
+  changeYAxis(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.yAxis[key] = value
+  },
+  changeYAxisLabel(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.yAxis.axisLabel[key] = value
+  },
+  changeYAxisNameTextStyle(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.yAxis.nameTextStyle[key] = value
+  },
+  changeYAxisTick(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.yAxis.axisTick[key] = value
+  },
+  changeYAxisLine(value, key) {
+    const id = this.activeRectId
+    if (id === null) {
+      return
+    }
+    const index = this.rects.findIndex((item) => item.id === id)
+    this.rects[index].options.yAxis.axisLine[key] = value
   }
 }

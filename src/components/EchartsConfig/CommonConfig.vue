@@ -1,7 +1,7 @@
 <template>
   <el-collapse-item title="标题配置" name="title">
     <div class="title-config-container config-container">
-      <el-form :label-position="'left'" label-width="auto">
+      <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="显示标题">
           <el-switch v-model="showTitle"></el-switch>
         </el-form-item>
@@ -60,7 +60,7 @@
   </el-collapse-item>
   <el-collapse-item title="提示框配置" name="tooltip">
     <div class="tooltip-config-container config-container">
-      <el-form :label-position="'left'" label-width="auto">
+      <el-form :label-position="'left'" label-width="100px">
         <el-form-item label="显示提示框">
           <el-switch v-model="showTooltip"></el-switch>
         </el-form-item>

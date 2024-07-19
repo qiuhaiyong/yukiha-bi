@@ -74,7 +74,7 @@ import { Delete } from '@element-plus/icons-vue'
 import { ContextMenu, ContextMenuItem } from '@imengyu/vue3-context-menu'
 import { useThrottleFn } from '@vueuse/core'
 import { ElMessageBox } from 'element-plus'
-import { markRaw, reactive, ref } from 'vue'
+import { computed, markRaw, onMounted, reactive, ref } from 'vue'
 import VueDragResize from 'vue-drag-resize/src/component/vue-drag-resize.vue'
 defineOptions({
   name: 'ScreenWrapper'
@@ -89,7 +89,7 @@ const wrapperOptions = ref({
 const rectSotre = useRectStore()
 
 // 元素
-const rects = rectSotre.$state.rects
+const rects = computed(() => rectSotre.$state.rects)
 
 // 是否展示右键菜单
 const showContextMenu = ref(false)
@@ -157,6 +157,8 @@ const toppingZindex = () => {
 const bottomZindex = () => {
   rectSotre.bottomZindex(rectSotre.activeRectId)
 }
+
+onMounted(() => {})
 </script>
 
 <style scoped>
