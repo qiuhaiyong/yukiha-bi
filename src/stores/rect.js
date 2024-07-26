@@ -8,6 +8,7 @@
 import { ElMessage } from 'element-plus'
 import { defineStore } from 'pinia'
 import ChartsActions from './rect-charts-actions'
+import ChartsDataActions from './rect-charts-data-actions'
 export const useRectStore = defineStore('RectStore ', {
   state: () => {
     return {
@@ -18,6 +19,14 @@ export const useRectStore = defineStore('RectStore ', {
   actions: {
     updateRects(rects) {
       this.rects = rects
+    },
+    updateRect(rect) {
+      const id = this.activeRectId
+      if (id === null) {
+        return
+      }
+      const index = this.rects.findIndex((item) => item.id === id)
+      this.rects[index] = rect
     },
     // 设置为活跃状态
     enableActive(id) {
@@ -165,7 +174,8 @@ export const useRectStore = defineStore('RectStore ', {
       this.rects.splice(index, 1)
       ElMessage.success('删除成功!')
     },
-    ...ChartsActions
+    ...ChartsActions,
+    ...ChartsDataActions
   },
   getters: {
     activeRect: (state) => {

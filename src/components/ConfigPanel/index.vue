@@ -5,16 +5,14 @@
         <!-- 基础配置 -->
         <BasicConfig v-model="configModel"></BasicConfig>
         <!-- 视图模式 -->
-        <div class="view-model" v-if="configModel === 'view'">
-          <keep-alive>
-            <EchartsConfig v-if="activeRect?.type?.startsWith('Echarts')"></EchartsConfig>
-          </keep-alive>
+        <div class="view-model" v-show="configModel === 'view'">
+          <EchartsConfig v-show="activeRect?.type?.startsWith('Echarts')"></EchartsConfig>
         </div>
         <!-- js模式 -->
-        <div class="js-model" v-else>js模式</div>
+        <div class="js-model" v-show="configModel === 'js'">js模式</div>
       </el-tab-pane>
       <el-tab-pane label="数据" name="data">
-        <DataConfig></DataConfig>
+        <EchartsDataConfig v-show="activeRect?.type?.startsWith('Echarts')"></EchartsDataConfig>
       </el-tab-pane>
     </el-tabs>
     <el-tabs v-model="tabTowActiveName" stretch v-show="!activeRect">
@@ -25,10 +23,10 @@
 
 <script setup>
 import BasicConfig from '@/components/BasicConfig/index.vue'
-import DataConfig from '@/components/DataConfig/DataConfig.vue'
 import EchartsConfig from '@/components/EchartsConfig/EchartsConfig.vue'
 import useRectStore from '@/stores/rect'
 import { computed, ref } from 'vue'
+import EchartsDataConfig from '../DataConfig/EchartsDataConfig.vue'
 
 defineOptions({
   name: 'ConfigPanel'

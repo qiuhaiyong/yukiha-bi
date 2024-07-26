@@ -74,7 +74,7 @@ import { Delete } from '@element-plus/icons-vue'
 import { ContextMenu, ContextMenuItem } from '@imengyu/vue3-context-menu'
 import { useThrottleFn } from '@vueuse/core'
 import { ElMessageBox } from 'element-plus'
-import { computed, markRaw, onMounted, reactive, ref } from 'vue'
+import { computed, markRaw, reactive, ref } from 'vue'
 import VueDragResize from 'vue-drag-resize/src/component/vue-drag-resize.vue'
 defineOptions({
   name: 'ScreenWrapper'
@@ -157,8 +157,6 @@ const toppingZindex = () => {
 const bottomZindex = () => {
   rectSotre.bottomZindex(rectSotre.activeRectId)
 }
-
-onMounted(() => {})
 </script>
 
 <style scoped>

@@ -62,17 +62,29 @@ import useRectStore from '@/stores/rect'
 import { cloneDeep } from 'lodash'
 import { nanoid } from 'nanoid'
 import rectconfig from './rectconfig'
+import dataMethodMap from './rectdata'
 import config from './toolbarconfig.json'
 defineOptions({
   name: 'ToolBar'
 })
 const rectSotre = useRectStore()
 
+// const setPiecharstData = (rect) => {
+//   console.log(123)
+// }
+
+// const dataMethodMap = new Map([
+//   ['Echarts-Pie', setPiecharstData],
+//   ['Echarts-Line', setPiecharstData],
+//   ['Echarts-Bar', setPiecharstData]
+// ])
+
 // 添加图形
 const addRect = (key) => {
   const rect = cloneDeep(rectconfig[key])
   rect.id = nanoid()
   rect.zIndex = rectSotre.rects.length + 1
+  dataMethodMap.get(rect.type)?.(rect)
   rectSotre.addRect(rect)
 }
 </script>

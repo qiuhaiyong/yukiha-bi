@@ -14,7 +14,13 @@ export default {
     icon: 'fa-solid fa-chart-pie',
     dataOptions: {
       type: 'static',
-      data: []
+      data: [
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }
+      ]
     },
     options: {
       color: [
@@ -128,7 +134,14 @@ export default {
     name: '基本柱状图',
     icon: 'fa-solid fa-chart-bar',
     dataOptions: {
-      type: 'static'
+      type: 'static',
+      data: [
+        { value: 1048, name: 'Mon' },
+        { value: 735, name: 'Tue' },
+        { value: 580, name: 'Wed' },
+        { value: 484, name: 'Thu' },
+        { value: 300, name: 'Fri' }
+      ]
     },
     options: {
       grid: {
@@ -278,7 +291,14 @@ export default {
     name: '基本折线图',
     icon: 'fa-solid fa-chart-line',
     dataOptions: {
-      type: 'static'
+      type: 'static',
+      data: [
+        { value: 1048, name: 'Mon' },
+        { value: 735, name: 'Tue' },
+        { value: 580, name: 'Wed' },
+        { value: 484, name: 'Thu' },
+        { value: 300, name: 'Fri' }
+      ]
     },
     options: {
       grid: {
